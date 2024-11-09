@@ -5,8 +5,6 @@ public partial class Player : CharacterBody2D
 {
 	[Export]
 	public float Speed = 200.0f;
-	[Export]
-	public float JumpVelocity = -400.0f;
 	AnimationTree animationTree;
 	Sprite2D sprite2D;
 	CharacterStateMachine stateMachine;
@@ -16,7 +14,6 @@ public partial class Player : CharacterBody2D
 		animationTree = GetNode<AnimationTree>("AnimationTree");
 		animationTree.Active = true;
 		stateMachine = GetNode<CharacterStateMachine>("CharacterStateMachine");
-		GD.Print(stateMachine.check_if_can_move());
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -29,13 +26,13 @@ public partial class Player : CharacterBody2D
 		}
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
+		// if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		// {
+		// 	velocity.Y = JumpVelocity;
+		// }
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", null, null);
+		Vector2 direction = Input.GetVector("move_left", "move_right", null, null);
 		if (direction != Vector2.Zero && stateMachine.check_if_can_move())
 		{
 			velocity.X = direction.X * Speed;
