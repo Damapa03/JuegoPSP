@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://q30mxvcb7ko1"]
+
+[ext_resource type="Script" path="res://scripts/UI/Button.cs" id="1_lmr87"]
+[ext_resource type="Script" path="res://scripts/UI/ButtonExit.cs" id="2_lktth"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cogrb"]
+font_size = 41
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 456.0
+offset_right = 462.0
+offset_bottom = 528.0
+text = "Start"
+script = ExtResource("1_lmr87")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 108.0
+offset_right = 769.0
+offset_bottom = 204.0
+text = "The wrath of the snails"
+label_settings = SubResource("LabelSettings_cogrb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 457.0
+offset_right = 893.0
+offset_bottom = 529.0
+text = "Exit?"
+script = ExtResource("2_lktth")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
